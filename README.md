@@ -59,7 +59,19 @@
 P.S. Не знаю почему так, но клиент бывает на каких-то действиях зависает, и для дальнейшей работы нужно перезапустить сервер tomcat. 
 
 # Запуск
+Изначально нужно добавить драйвер mysql в Tomcat/libs. Далее нужно в Tomcat/conf/server.xml внутри GlobalNamingResources добавить конфиг БД.
 
+` <Resource name="jdbc/j2eehandbook"
+  auth="Container" 
+  type="javax.sql.DataSource" 
+  driverClassName="com.mysql.jdbc.Driver" 
+  url="jdbc:mysql://localhost:3306/j2eehandbook?useSSL=false" 
+  username= "username"
+  password="password" 
+  maxIdle="20" 
+  minIdle="5" /> `
+  
+      
 - Для сервера:
 
     Нужно запустить build.xml и из папки build переместить .aar файл в папку Tomcat/webapps/axis2/WEB-INF/services. Для этого нужно установить Axis2 war(нужно будет запустить один раз сервер для деплоя) или exploded. Далее запустить tomcat сервер.
